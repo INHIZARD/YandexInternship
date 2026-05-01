@@ -44,11 +44,10 @@ public class FileOrDirectoryMetainformationTest extends BaseTest {
     @Test
     @DisplayName("Статус 200 для ресурса на диске")
     void getDiskMetainformationInfo200() {
-        Response response = client.getDiskMetainformationInfo(DIR_PATH);
+        Response response = client.getResource(DIR_PATH);
 
         assertEquals(200, response.getStatusCode());
-        assertEquals(DIR_TYPE, response.jsonPath().getString(TYPE_PARAM),
-                DIR_TYPE_DESCRIPTION);
+        assertEquals(DIR_TYPE, response.jsonPath().getString(TYPE_PARAM), DIR_TYPE_DESCRIPTION);
     }
 
     /**
@@ -57,7 +56,7 @@ public class FileOrDirectoryMetainformationTest extends BaseTest {
     @Test
     @DisplayName("Статус 404 для несуществующего ресурса")
     void getResource_nonExistent_returns404() {
-        Response response = client.getDiskMetainformationInfo(DISK_NONEXISTENT_PATH);
+        Response response = client.getResource(DISK_NONEXISTENT_PATH);
 
         assertEquals(404, response.getStatusCode());
     }

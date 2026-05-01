@@ -52,10 +52,54 @@ public class YandexDiskClient {
                 .get();
     }
 
-    public Response getDiskMetainformationInfo(String path) {
+    /**
+     * Запрос метаинформации
+     * @param path путь к файлу или директории
+     * @return данные о метоинформации
+     */
+    public Response getResource(String path) {
         return baseSpec()
                 .queryParam("path", path)
                 .when()
                 .get("/resources");
+    }
+
+    /**
+     * Создание папки
+     * @param path путь к создаваемой папке
+     * @return ответ о созданной папке
+     */
+    public Response createFolder(String path) {
+        return baseSpec()
+                .queryParam("path", path)
+                .when()
+                .put("/resources");
+    }
+
+    /**
+     * Копирование ресурса
+     * @param from путь к копируемому ресурсу
+     * @param to путь к создаваемой копии
+     * @return ответ о копируемом ресурсе
+     */
+    public Response copyResource(String from, String to) {
+        return baseSpec()
+                .queryParam("from", from)
+                .queryParam("path", to)
+                .when()
+                .post("/resources/copy");
+    }
+
+    /**
+     * Удаление ресурса
+     * @param path путь к удаляемому ресурсу
+     * @return ответ об удаляемом ресурсе
+     */
+    public Response deleteResource(String path) {
+        return baseSpec()
+                .queryParam("path", path)
+                .queryParam("permanently", true)
+                .when()
+                .delete("/resources");
     }
 }
