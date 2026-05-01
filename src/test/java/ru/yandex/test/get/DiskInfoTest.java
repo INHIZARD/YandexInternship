@@ -26,9 +26,15 @@ public class DiskInfoTest extends BaseTest {
      */
     public static final String TOTAL_SPACE_FIELD_DESCRIPTION = "Поле total_space должно присутствовать";
 
+    /**
+     * Заголовок авторизации
+     */
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
-    public static final String ERROR_OAUTH_TOKEN = "OAuth invalid_token_12345";
+    /**
+     * Ошибочный токен
+     */
+    public static final String ERROR_OAUTH_TOKEN = "OAuth invalid_token";
 
     /**
      * Тест статуса 200

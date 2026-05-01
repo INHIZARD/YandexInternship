@@ -51,4 +51,11 @@ public class YandexDiskClient {
                 .when()
                 .get();
     }
+
+    public Response getDiskMetainformationInfo(String path) {
+        return baseSpec()
+                .queryParam("path", path)
+                .when()
+                .get("/resources");
+    }
 }
