@@ -32,6 +32,31 @@ public class YandexDiskClient {
     public static final String JSON_HEADER_VALUE = "application/json";
 
     /**
+     * Параметр пути
+     */
+    public static final String PARAM_PATH = "path";
+
+    /**
+     * Путь ресурса
+     */
+    public static final String PATH_RESOURCES = "/resources";
+
+    /**
+     * Параметр откуда берется ресурс
+     */
+    public static final String PARAM_FROM = "from";
+
+    /**
+     * Путь копирования
+     */
+    public static final String PATH_COPY = "/resources/copy";
+
+    /**
+     * Параметр удаления навсегда
+     */
+    public static final String PARAM_PERMANENTLY = "permanently";
+
+    /**
      * Метод, который обращается к ресурсу Яндекс.Диска
      * @return дефолтный запрос
      */
@@ -59,9 +84,9 @@ public class YandexDiskClient {
      */
     public Response getResource(String path) {
         return baseSpec()
-                .queryParam("path", path)
+                .queryParam(PARAM_PATH, path)
                 .when()
-                .get("/resources");
+                .get(PATH_RESOURCES);
     }
 
     /**
@@ -71,9 +96,9 @@ public class YandexDiskClient {
      */
     public Response createFolder(String path) {
         return baseSpec()
-                .queryParam("path", path)
+                .queryParam(PARAM_PATH, path)
                 .when()
-                .put("/resources");
+                .put(PATH_RESOURCES);
     }
 
     /**
@@ -84,10 +109,10 @@ public class YandexDiskClient {
      */
     public Response copyResource(String from, String to) {
         return baseSpec()
-                .queryParam("from", from)
-                .queryParam("path", to)
+                .queryParam(PARAM_FROM, from)
+                .queryParam(PARAM_PATH, to)
                 .when()
-                .post("/resources/copy");
+                .post(PATH_COPY);
     }
 
     /**
@@ -97,9 +122,9 @@ public class YandexDiskClient {
      */
     public Response deleteResource(String path) {
         return baseSpec()
-                .queryParam("path", path)
-                .queryParam("permanently", true)
+                .queryParam(PARAM_PATH, path)
+                .queryParam(PARAM_PERMANENTLY, true)
                 .when()
-                .delete("/resources");
+                .delete(PATH_RESOURCES);
     }
 }
