@@ -8,6 +8,9 @@ import ru.yandex.test.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Класс с тестами создания папки
+ */
 @DisplayName("Создание папки")
 public class FolderCreateTest extends BaseTest {
 
