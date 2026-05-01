@@ -55,7 +55,7 @@ public class FileOrDirectoryMetainformationTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 404 для несуществующего ресурса")
-    void getResource_nonExistent_returns404() {
+    void getDiskMetainformationInfo404() {
         Response response = client.getResource(DISK_NONEXISTENT_PATH);
 
         assertEquals(404, response.getStatusCode());

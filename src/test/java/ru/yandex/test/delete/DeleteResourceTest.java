@@ -47,7 +47,7 @@ public class DeleteResourceTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 204 при удалении существующей папки")
-    void deleteResource_returns204() {
+    void deleteResource204() {
         client.createFolder(FOLDER_PATH);
 
         Response response = client.deleteResource(FOLDER_PATH);
@@ -60,7 +60,7 @@ public class DeleteResourceTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 404 ресурс действительно удалён (GET возвращает 404)")
-    void deleteResource_thenGetReturns404() {
+    void deleteResourceGet404() {
         client.createFolder(FOLDER_PATH);
         client.deleteResource(FOLDER_PATH);
 
@@ -74,7 +74,7 @@ public class DeleteResourceTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 404 при удалении несуществующего ресурса")
-    void deleteResource_nonExistent_returns404() {
+    void deleteResource404() {
         Response response = client.deleteResource(DISK_NONEXISTENT_FOLDER);
 
         assertEquals(404, response.getStatusCode());
@@ -85,7 +85,7 @@ public class DeleteResourceTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 400 при пустом пути")
-    void deleteResource_emptyPath_returns400() {
+    void deleteResource400() {
         Response response = client.deleteResource(EMPTY_PATH);
 
         assertEquals(400, response.getStatusCode());

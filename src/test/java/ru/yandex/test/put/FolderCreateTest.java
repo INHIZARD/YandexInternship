@@ -48,7 +48,7 @@ public class FolderCreateTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 201 при создании новой папки")
-    void createFolder_returns201() {
+    void createFolder201() {
         Response response = client.createFolder(FOLDER_PATH);
 
         assertEquals(201, response.getStatusCode());
@@ -59,7 +59,7 @@ public class FolderCreateTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 200 папка реально создана")
-    void createFolder_folderActuallyExists() {
+    void createFolder200() {
         client.createFolder(FOLDER_PATH);
 
         Response getResponse = client.getResource(FOLDER_PATH);
@@ -73,7 +73,7 @@ public class FolderCreateTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 409 при повторном создании той же папки")
-    void createFolder_duplicate_returns409() {
+    void createFolder409() {
         client.createFolder(FOLDER_PATH);
 
         Response response = client.createFolder(FOLDER_PATH);
@@ -86,7 +86,7 @@ public class FolderCreateTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 400 при пустом пути")
-    void createFolder_emptyPath_returns400() {
+    void createFolder400() {
         Response response = client.createFolder("");
 
         assertEquals(400, response.getStatusCode());

@@ -64,7 +64,7 @@ public class ResourceCopyTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 201 при копировании папки")
-    void copyResource_returns201() {
+    void copyResource201() {
         Response response = client.copyResource(SOURCE, COPY);
 
         assertEquals(201, response.getStatusCode());
@@ -75,7 +75,7 @@ public class ResourceCopyTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 200 копия реально создана")
-    void copyResource_copyActuallyExists() {
+    void copyResource200() {
         client.copyResource(SOURCE, COPY);
 
         Response getResponse = client.getResource(COPY);
@@ -89,7 +89,7 @@ public class ResourceCopyTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 409 при копировании в уже существующий путь")
-    void copyResource_destinationExists_returns409() {
+    void copyResource409() {
         client.copyResource(SOURCE, COPY);
 
         Response response = client.copyResource(SOURCE, COPY);
@@ -102,7 +102,7 @@ public class ResourceCopyTest extends BaseTest {
      */
     @Test
     @DisplayName("Статус 404 при копировании несуществующего ресурса")
-    void copyResource_nonExistentSource_returns404() {
+    void copyResource404() {
         Response response = client.copyResource(DISK_NONEXISTENT, COPY);
 
         assertEquals(404, response.getStatusCode());
